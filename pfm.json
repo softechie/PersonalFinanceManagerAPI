@@ -1,0 +1,402 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Personal Finance Manager",
+    "description": "Simple Personal Finance Manager application to track investments",
+    "termsOfService": "terms",
+    "contact": {
+      "name": "Tembong Fonji",
+      "email": "tembong_fonji@syntelinc.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "host": "pfm.base.url",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "investor",
+      "description": "Investor Information."
+    },
+    {
+      "name": "investment",
+      "description": "Investment Information."
+    }
+  ],
+  "paths": {
+    "/investor": {
+      "get": {
+        "tags": [
+          "investor"
+        ],
+        "summary": "find an investor.",
+        "description": "retrieve an investor's personal information and portfolio by specifying an investor_id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "id for investor for whom information is to be retrieved.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/investor_id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "investor information successfully retrieved.",
+            "schema": {
+              "$ref": "#/definitions/investor"
+            }
+          }
+        }
+      }
+    },
+    "/investor/all": {
+      "get": {
+        "tags": [
+          "investor"
+        ],
+        "summary": "find all investors.",
+        "description": "retrieve all investors. this will include personal information and portfolio information for each investor.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "investor information successfully retrieved.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/investor"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investor/new": {
+      "post": {
+        "tags": [
+          "investor"
+        ],
+        "summary": "add a new investor.",
+        "description": "add a new investor to the database. first_name and last_name are the only required fields.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "investor object to add to database.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/investor_name"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "investor information successfully added to database.",
+            "schema": {
+              "$ref": ""
+            }
+          }
+        }
+      }
+    },
+    "/investor/delete": {
+      "delete": {
+        "tags": [
+          "investor"
+        ],
+        "summary": "delete investor.",
+        "description": "delete an existing investor by specifying an investor_id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "investor to delete from database.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/investor_id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "investor successfully delelted from database."
+          }
+        }
+      }
+    },
+    "/investmentById": {
+      "get": {
+        "tags": [
+          "investment"
+        ],
+        "summary": "find a unique investment.",
+        "description": "retrieve an investment by specifying an investment_id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "investment_id for investment to be retrieved.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/investment_id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "investment successfully retrieved.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/investment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investment/new": {
+      "post": {
+        "tags": [
+          "investment"
+        ],
+        "summary": "new investment.",
+        "description": "create a new investment for an existing investor.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "investment object to add to database.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/investment"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "investment successfully added to database.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/investment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/investment/delete": {
+      "delete": {
+        "tags": [
+          "investment"
+        ],
+        "summary": "delete investment.",
+        "description": "delete an existing investment by specifying an investment_id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "investment object to delete from database.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/investor_id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "investment successfully delelted from database."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "investor_id": {
+      "type": "string",
+      "required": [
+        "investor_id"
+      ],
+      "properties": {
+        "investor_id": {
+          "type": "string"
+        }
+      }
+    },
+    "investment_id": {
+      "type": "string",
+      "required": [
+        "investment_id"
+      ],
+      "properties": {
+        "investmentId": {
+          "type": "string"
+        }
+      }
+    },
+    "investor": {
+      "type": "object",
+      "required": [
+        "first_name",
+        "last_name"
+      ],
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "portfolio": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/portfolio"
+          }
+        }
+      }
+    },
+    "investment": {
+      "type": "object",
+      "required": [
+        "initial_investment",
+        "date",
+        "investment_type",
+        "rate"
+      ],
+      "properties": {
+        "investor_id": {
+          "type": "string"
+        },
+        "investment_id": {
+          "type": "number"
+        },
+        "initial_investment": {
+          "type": "number"
+        },
+        "current_investment": {
+          "type": "number"
+        },
+        "investment_type": {
+          "type": "string"
+        },
+        "investment_details": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "rate": {
+          "type": "number"
+        },
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/transaction"
+          }
+        }
+      }
+    },
+    "transaction": {
+      "type": "object",
+      "required": [
+        "date",
+        "time",
+        "investment_id",
+        "investor_id",
+        "transaction_type",
+        "description",
+        "previous_amount",
+        "current_amount"
+      ],
+      "properties": {
+        "current_amount": {
+          "type": "number"
+        },
+        "previous_amount": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "time": {
+          "type": "string",
+          "format": "time"
+        },
+        "investment_id": {
+          "type": "string"
+        },
+        "investor_id": {
+          "type": "string"
+        },
+        "transaction_type": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "portfolio": {
+      "properties": {
+        "investor_id": {
+          "type": "string"
+        },
+        "investments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/investment"
+          }
+        }
+      }
+    },
+    "investor_name": {
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
