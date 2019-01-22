@@ -1,3 +1,2 @@
 # PersonalFinanceManagerAPI
-PFM (Personal Finance Manager) product backend API application
-Test checkin access for Chandra
+PFM (Personal Finance Manager) product backend REST API application
