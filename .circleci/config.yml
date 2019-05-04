@@ -32,7 +32,6 @@ jobs:
         keys:
         - v1-dependencies-{{ checksum "~/PFM-API/spring-javaj2eefsd-workshop/pom.xml" }}
         - v1-dependencies-
-    - run: mvn dependency:go-offline
     - save_cache:
         paths:
         - ~/.m2
