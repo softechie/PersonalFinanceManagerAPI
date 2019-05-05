@@ -101,7 +101,7 @@ public class RegisterDaoImpl implements RegisterDao {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("pfmsupp@gmail"));
+			message.setFrom(new InternetAddress("pfm@mail.com"));
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(emailId));
 			message.setSubject("Personal Finance Manager - Registration OTP");
