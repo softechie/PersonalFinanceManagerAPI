@@ -44,10 +44,10 @@ workflows:
     - build:
         filters:
           branches:
-            only: public_access
+            only: public_access_offshore
     - deploy:
         requires:
         - build
         filters:
           branches:
-            only: public_access
+            only: public_access_offshore
