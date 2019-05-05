@@ -82,13 +82,13 @@ public class RegisterDaoImpl implements RegisterDao {
 	public void sendEmail(String emailId, Integer otp) throws Exception {
 		// TODO Auto-generated method stub
 
-		final String username = "pfmsupp@gmail.com";
+		final String username = "pfm@mail.com";
 		final String password = "pfm@admin";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.starttls.enable", "false");
+		props.put("mail.smtp.host", "smtp.mail.com");
 		props.put("mail.smtp.port", "587");
 
 		Session session = Session.getInstance(props,
