@@ -33,6 +33,7 @@ public class PasswordHasher {
 	 * @return boolean - true if the password matches the password of the stored hash, false otherwise
 	 */
 	public static boolean checkPassword(String password_plaintext, String stored_hash) {
+		//IDIOM:Item-0008: Use descriptive Identifiers
 		boolean password_verified = false;
 
 		if(null == stored_hash || !stored_hash.startsWith("$2a$"))

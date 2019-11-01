@@ -3,7 +3,10 @@ package com.javaj2eefsd.workshop.api;
 import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+ * ApiResponseMessage class is used for creating the error code and type of error.
+ */
 @Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @XmlRootElement

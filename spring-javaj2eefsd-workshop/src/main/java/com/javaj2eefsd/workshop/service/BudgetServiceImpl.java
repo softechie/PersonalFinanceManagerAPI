@@ -1,17 +1,16 @@
 package com.javaj2eefsd.workshop.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
+import org.json.simple.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import com.javaj2eefsd.workshop.dao.IBudgetDao;
-import com.javaj2eefsd.workshop.model.Budget;
 import com.javaj2eefsd.workshop.model.DateRange;
 
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* @author Nagarjuna - BudgetServiceImpl class used to validate the business logic and help to call the dao layer
+*/
 @Service
 public class BudgetServiceImpl implements IBudgetService {
 	

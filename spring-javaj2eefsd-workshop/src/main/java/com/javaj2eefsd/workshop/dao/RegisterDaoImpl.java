@@ -46,7 +46,7 @@ public class RegisterDaoImpl implements RegisterDao {
 			registeruser.setUserStatus(false);
 			registeruser.setOtp(otp);
 			mongoTemplate.save(registeruser);
-			this.sendEmail(registeruser.getEmailId(),registeruser.getOtp());
+			//this.sendEmail(registeruser.getEmailId(),registeruser.getOtp());
 		}
 		catch (DuplicateKeyException e) {
 			throw new ApiException(PFMConstants.ERROR_CODE, PFMConstants.INVALID_USER_EXISTS);

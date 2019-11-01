@@ -33,18 +33,23 @@ import com.javaj2eefsd.workshop.model.DateRange;
 import com.javaj2eefsd.workshop.model.Expense;
 import com.javaj2eefsd.workshop.model.Income;
 import com.javaj2eefsd.workshop.model.Investments;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+ *  BundgetDaoImpl class is used to connect java code in database and create,
+ *         update, delete, retrieve and search budget data.
+ */
 @Repository
 public class BudgetDaoImpl implements IBudgetDao {
 	
 	// create object from MongoTemplate
     @Autowired
     MongoTemplate mongoTemplate;
+    //IDIOM:Item-0013: Prefer Collection over Arrays
 	private List<Expense> expenseList;
 	private List<Income> incomeList;
 	private List<Investments> investmentsList;
 	private List<Budget> budgetList;
-
+	//IDIOM:Item-0130:Use the correct data structure
 	HashMap <Long, Double> expenseMap = new HashMap <Long, Double> ();
 	HashMap <Long, Double> incomeMap = new HashMap <Long, Double> ();
 	HashMap <Long, Double> investmentMap = new HashMap <Long, Double> ();
@@ -55,10 +60,11 @@ public class BudgetDaoImpl implements IBudgetDao {
 	@Override
 	//public List<Budget> getAllBudget(DateRange body) throws Exception {
 	public JSONArray getAllBudget(DateRange body) throws Exception {
-		ArrayList investmentLists = new ArrayList<>();
-		ArrayList incomeLists = new ArrayList<>();	
-		ArrayList expenseLists = new ArrayList<>();
-		ArrayList MoneyFlowLists = new ArrayList<>();
+		//IDIOM:Item-0006: Code to contracts(Eg:List) not implementations (Eg:ArrayList)
+		List investmentLists = new ArrayList();
+		List incomeLists = new ArrayList<>();	
+		List expenseLists = new ArrayList<>();
+		List MoneyFlowLists = new ArrayList<>();
 		
 		budgetList = null;
 		Date dateFromDate = new Date(body.getFromExpenseDate().toInstant().toEpochMilli());
@@ -89,7 +95,7 @@ public class BudgetDaoImpl implements IBudgetDao {
         	
             for (HashMap.Entry <Long, Double> entry : investmentMap.entrySet()) 
             {
-            	ArrayList dummy = new ArrayList<>();
+            	List dummy = new ArrayList<>();
                 Long key = entry.getKey();
                 Object value = entry.getValue();
                 dummy.add(key); dummy.add(value);
@@ -110,7 +116,7 @@ public class BudgetDaoImpl implements IBudgetDao {
         	
             for (HashMap.Entry <Long, Double> entry : incomeMap.entrySet()) 
             {
-            	ArrayList dummy = new ArrayList<>();
+            	List dummy = new ArrayList<>();
                 Long key = entry.getKey();
                 Object value = entry.getValue();
                 dummy.add(key); dummy.add(value);
@@ -131,7 +137,7 @@ public class BudgetDaoImpl implements IBudgetDao {
         	
             for (HashMap.Entry <Long, Double> entry : expenseMap.entrySet()) 
             {
-            	ArrayList dummy = new ArrayList<>();
+            	List dummy = new ArrayList<>();
                 Long key = entry.getKey();
                 Object value = entry.getValue();
                 dummy.add(key); dummy.add(value);
@@ -142,19 +148,19 @@ public class BudgetDaoImpl implements IBudgetDao {
             expenseMap.clear();
         	
      	   
-            ArrayList dummy = new ArrayList();
+            List dummy = new ArrayList();
             dummy.add("From");
             dummy.add("To");
             dummy.add("Amount");
             MoneyFlowLists.add(dummy);
             
-            ArrayList dummy1 = new ArrayList();
+            List dummy1 = new ArrayList();
             dummy1.add("Income");
             dummy1.add("Expense");
             dummy1.add(TotalExpense);
             MoneyFlowLists.add(dummy1);
    
-            ArrayList dummy2 = new ArrayList();
+            List dummy2 = new ArrayList();
             dummy2.add("Income");
             dummy2.add("Investement");
             dummy2.add(TotalInvestment);
@@ -163,7 +169,7 @@ public class BudgetDaoImpl implements IBudgetDao {
             double balance = TotalIncome - TotalExpense + TotalInvestment;
             if (balance > 0)
             {
-            	ArrayList dummy3 = new ArrayList();
+            	List dummy3 = new ArrayList();
             	dummy3.add("Income");
                 dummy3.add("Balance");
                 dummy3.add(balance);

@@ -11,14 +11,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
- * UserDetail
+ * UserDetail model class
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
-@Document(collection="user")
+@Document(collection="user_siri")
 public class UserDetail   {
 
   @Indexed(unique=true)
@@ -99,7 +99,7 @@ public class UserDetail   {
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
-      return true;
+      return true; 
     }
     if (o == null || getClass() != o.getClass()) {
       return false;

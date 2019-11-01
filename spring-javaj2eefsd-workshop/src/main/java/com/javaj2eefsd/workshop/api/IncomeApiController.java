@@ -2,7 +2,7 @@ package com.javaj2eefsd.workshop.api;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -22,7 +22,11 @@ import com.javaj2eefsd.workshop.service.IncomeService;
 import com.javaj2eefsd.workshop.util.PFMConstants;
 
 import io.swagger.annotations.ApiParam;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is IncomeApiController this class connect with income module end point who where called
+ *         in webservice give the response for create ,update.delete,retrieve and search the income details.
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Controller
@@ -30,11 +34,12 @@ import io.swagger.annotations.ApiParam;
 public class IncomeApiController implements IncomeApi {
 
     private static final Logger log = LoggerFactory.getLogger(IncomeApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
-    
+     
+    //object for income service
     @Autowired
     IncomeService incomeServiceImpl;
 
@@ -44,6 +49,10 @@ public class IncomeApiController implements IncomeApi {
         this.request = request;
     }
 
+    /***
+     * addIncome method help to create new income getting data from front end and call the income service to create
+     * new income data in db
+     */
     public ResponseEntity<ApiResponseMessage> addIncome(
     		@ApiParam(value = "Income object that needs to be added to the store" ,required=true )  @Valid @RequestBody Income body)
     		throws Exception {
@@ -74,6 +83,10 @@ public class IncomeApiController implements IncomeApi {
         		HttpStatus.OK);
     }
 
+    /**
+     * deleteIncome method help to delete income data based on user inputs and this only soft deleted the income data
+     * and call the income service to delete the data in db
+     */
     public ResponseEntity<ApiResponseMessage> deleteIncome(
     		@ApiParam(value = "Income id to delete",required=true) @PathVariable("incomeId") String incomeId)
     		throws Exception {
@@ -104,6 +117,12 @@ public class IncomeApiController implements IncomeApi {
         		HttpStatus.OK);
     }
     
+    /**
+     * getIncome this method used to search the income data based on user inputs and call the income service to
+     * retrieve the data in db
+     *
+     * @throws Exception
+     */
     public ResponseEntity<?> getIncome(
     		@ApiParam(value = "id to search for income",required=true) @PathVariable("incomeId") String incomeId)
     		throws Exception {
@@ -135,6 +154,12 @@ public class IncomeApiController implements IncomeApi {
         }
     }
 
+    /**
+     * getIncomeByKey this method used to search the income data based on user inputs and call the income service to
+     * retrieve the data in db
+     *
+     * @throws Exception
+     */
     public ResponseEntity<?> getIncomeByKey(
     		@NotNull @ApiParam(value = "Key to search for income", required = true) @Valid @RequestParam(value = "incomeKey", required = true) String incomeKey)
     		throws Exception {
@@ -171,6 +196,10 @@ public class IncomeApiController implements IncomeApi {
         return new ResponseEntity<List<Income>>(incomeList, HttpStatus.OK);
     }
 
+    /***
+     * getIncomeList this method used to get the login user income data and non-deleted data and call the income
+     * service to retrieve the income data
+     */
     public ResponseEntity<?> getIncomeList() throws Exception {
     	
         final String accept = request.getHeader("Accept");
@@ -202,6 +231,10 @@ public class IncomeApiController implements IncomeApi {
         return new ResponseEntity<List<Income>>(incomeList, HttpStatus.OK);
     }
 
+    /***
+     * updateIncome is used to update the income data based on user action and call the income service to update the
+     * income data
+     */
     public ResponseEntity<ApiResponseMessage> updateIncome(
     		@ApiParam(value = "Income object that needs to be updated to the store" ,required=true )  @Valid @RequestBody Income body)
     		throws Exception {

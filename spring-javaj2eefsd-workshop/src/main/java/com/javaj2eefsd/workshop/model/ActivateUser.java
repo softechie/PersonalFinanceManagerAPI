@@ -1,5 +1,6 @@
 package com.javaj2eefsd.workshop.model;
 
+
 import java.util.Objects;
 
 import javax.validation.Valid;
@@ -14,6 +15,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.swagger.annotations.ApiModelProperty;
 
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+*  ActivateUser model class.
+*/
 @Validated
 @Document(collection="user")
 public class ActivateUser {

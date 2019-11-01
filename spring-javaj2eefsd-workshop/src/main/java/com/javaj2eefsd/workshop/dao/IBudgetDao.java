@@ -1,14 +1,12 @@
 package com.javaj2eefsd.workshop.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
-
-import com.javaj2eefsd.workshop.model.Budget;
 import com.javaj2eefsd.workshop.model.DateRange;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* @author sathsubramanian IBudgetDao class is used to connect java code in database and retrieve
+*         and search budget data
+*/
 public interface IBudgetDao {
 
 	//List<Budget> getAllBudget(DateRange body) throws Exception;

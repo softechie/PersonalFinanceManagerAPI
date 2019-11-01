@@ -1,5 +1,9 @@
 package com.javaj2eefsd.workshop.util;
 
+
+//IDIOM:Item-0008: Use descriptive Identifiers
+//IDIOM:Item-0065: Upper case naming
+
 public class PFMConstants {
 	//codes
 	public static final int ERROR_CODE = 1;
@@ -8,6 +12,7 @@ public class PFMConstants {
 	public static final String UNKNOWN_EXCEPTION = "Unknown exception";
 	public static final String SEARCHKEYISNULL = "Search key is empty";
     public static final String INVALID_SEARCHKEY = "No data found for the given keywords";
+    
     
 	//Income messages
 	public static final String INVALID_INCOMEID = "Invalid income id";
@@ -36,6 +41,7 @@ public class PFMConstants {
 	public static final String SUCCESS_USER_ACTIVATED = "Successfully activated user";
 	
 	//register user
-	public static final String INVALID_USER_EXISTS = "User exists with provided email address";
+	//public static final String INVALID_USER_EXISTS = "User exists with provided email address";
 	public static final String SUCCESS_USER_CREATED = "Successfully created user";
+	public static final String INVALID_USER_EXISTS = "User exists with provided Email address/Mobile number";
 }

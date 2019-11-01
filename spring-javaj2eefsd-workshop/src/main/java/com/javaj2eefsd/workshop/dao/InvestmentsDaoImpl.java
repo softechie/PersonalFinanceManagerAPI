@@ -17,9 +17,9 @@ import com.javaj2eefsd.workshop.api.ApiException;
 import com.javaj2eefsd.workshop.model.Investments;
 import com.javaj2eefsd.workshop.util.PFMConstants;
 import com.mongodb.WriteResult;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
- * @author Nagarjuna - InvestmentsDao class is used to connect java code in database and create,
+ * @author Nagarjuna - InvestmentsDaoImpl class is used to connect java code in database and create,
  *         update, delete, retrieve and search income data.
  */
 @Repository

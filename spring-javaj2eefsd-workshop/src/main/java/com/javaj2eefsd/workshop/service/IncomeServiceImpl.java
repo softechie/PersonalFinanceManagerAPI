@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.threeten.bp.OffsetDateTime;
 import com.javaj2eefsd.workshop.dao.IncomeDao;
 import com.javaj2eefsd.workshop.model.Income;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * @author Nagarjuna - IncomeService interface used to validate the business logic and help to call the dao layer
  */
@@ -56,6 +56,7 @@ public class IncomeServiceImpl implements IncomeService {
     @Override
     public Income createIncome(Income incomeObj) throws Exception {
     	log.info("[createIncome] start createIncome in Service");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
     	incomeObj.setCreatedDate(OffsetDateTime.now());
     	incomeObj.setUpdatedDate(OffsetDateTime.now());
     	incomeObj.setCreatedBy("1");
@@ -88,6 +89,7 @@ public class IncomeServiceImpl implements IncomeService {
     @Override
     public void updateIncome(Income incomeObj, String userId) throws Exception {
     	log.info("[updateIncome] start updateIncome in Service");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
     	incomeObj.setUpdatedDate(OffsetDateTime.now());
     	incomeObj.setCreatedBy("1");
     	log.info("[updateIncome] update some fields before update");

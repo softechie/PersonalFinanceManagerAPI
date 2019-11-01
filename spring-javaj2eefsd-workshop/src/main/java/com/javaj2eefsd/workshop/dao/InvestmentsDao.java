@@ -2,7 +2,7 @@ package com.javaj2eefsd.workshop.dao;
 
 import java.util.List;
 import com.javaj2eefsd.workshop.model.Investments;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * @author Nagarjuna - InvestmentsDao interface is used to connect java code in database and create,
  *         update, delete, retrieve and search income data.

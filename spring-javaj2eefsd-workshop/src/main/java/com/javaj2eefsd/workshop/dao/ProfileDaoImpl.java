@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.tags.EditorAwareTag;
 
 import com.javaj2eefsd.workshop.model.Profile;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * 
  * @author Kumar - ProfileDaoImpl class is Database Access Object for profile to connect with Database

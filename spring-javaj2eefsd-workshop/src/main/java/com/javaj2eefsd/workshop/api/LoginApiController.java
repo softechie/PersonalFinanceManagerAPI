@@ -16,6 +16,11 @@ import com.javaj2eefsd.workshop.model.UserDetail;
 import com.javaj2eefsd.workshop.service.LoginService;
 import com.javaj2eefsd.workshop.util.PFMConstants;
 import io.swagger.annotations.ApiParam;
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is LoginApiController this class connect with login module end point who where called
+ *         in webservice give the response for validate the user details.
+ */
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
@@ -24,7 +29,7 @@ import io.swagger.annotations.ApiParam;
 public class LoginApiController implements LoginApi {
 
     private static final Logger log = LoggerFactory.getLogger(LoginApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -38,6 +43,10 @@ public class LoginApiController implements LoginApi {
     @Autowired
     LoginService loginserviceObj;
 
+    /***
+     * loginUser method help to validate the user details with the data which are stored in db.
+     * 
+     */
     @Override
     public ResponseEntity<?> loginUser(
             @ApiParam(value = "User needs to be authenticated. Password must be encrypted.", required = true) @Valid @RequestBody final UserDetail body)

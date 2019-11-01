@@ -34,13 +34,18 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is SendEmailApiController this class connect with send email module end point who where called
+ *         in webservice give the response for sending the email to user
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Controller
 public class SendEmailApiController implements SendEmailApi {
 
     private static final Logger log = LoggerFactory.getLogger(SendEmailApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -54,6 +59,11 @@ public class SendEmailApiController implements SendEmailApi {
     @Autowired
     RegisterService registerserviceObj;
     
+    /***
+     * sendEmailToUser method help to send otp to user registered email
+     *
+     */
+
     @Override
     public ResponseEntity<String> sendEmailToUser(@ApiParam(value = "Send OTP mail." ,required=true )  @RequestParam("emailId") String emailId, @RequestParam("otp")  Integer otp) throws Exception {
     

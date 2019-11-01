@@ -2,7 +2,7 @@ package com.javaj2eefsd.workshop.api;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -21,7 +21,11 @@ import com.javaj2eefsd.workshop.model.Investments;
 import com.javaj2eefsd.workshop.service.InvestmentsService;
 import com.javaj2eefsd.workshop.util.PFMConstants;
 import io.swagger.annotations.ApiParam;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is InvestmentsApiController this class connect with investments module end point who where called
+ *         in webservice give the response for create ,update.delete,retrieve and search the investment details.
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Controller
@@ -29,7 +33,7 @@ import io.swagger.annotations.ApiParam;
 public class InvestmentsApiController implements InvestmentsApi {
 
     private static final Logger log = LoggerFactory.getLogger(InvestmentsApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -43,6 +47,10 @@ public class InvestmentsApiController implements InvestmentsApi {
         this.request = request;
     }
 
+    /***
+     * addInvestments method help to create new investment getting data from front end and call the investment service to create
+     * new investment data in db
+     */
     public ResponseEntity<ApiResponseMessage> addInvestments(
     		@ApiParam(value = "Investments object that needs to be added to the store" ,required=true )  @Valid @RequestBody Investments body)
     		throws Exception {
@@ -73,6 +81,10 @@ public class InvestmentsApiController implements InvestmentsApi {
         		HttpStatus.OK);
     }
 
+    /**
+     * deleteInvestments method help to delete Investments data based on user inputs and this only soft deleted the Investments data
+     * and call the investments service to delete the data in db
+     */
     public ResponseEntity<ApiResponseMessage> deleteInvestments(
     		@ApiParam(value = "Investments id to delete",required=true) @PathVariable("investmentsId") String investmentsId)
     		throws Exception {
@@ -103,6 +115,12 @@ public class InvestmentsApiController implements InvestmentsApi {
         		HttpStatus.OK);
     }
     
+    /**
+     * getInvestments this method used to search the investments data based on user inputs and call the investments service to
+     * retrieve the data in db
+     *
+     * @throws Exception
+     */
     public ResponseEntity<?> getInvestments(
     		@ApiParam(value = "id to search for investments",required=true) @PathVariable("investmentsId") String investmentsId)
     		throws Exception {
@@ -134,6 +152,12 @@ public class InvestmentsApiController implements InvestmentsApi {
         }
     }
 
+    /**
+     * getInvestmentsByKey this method used to search the investments data based on user inputs and call the expense service to
+     * retrieve the data in db
+     *
+     * @throws Exception
+     */
     public ResponseEntity<?> getInvestmentsByKey(
     		@NotNull @ApiParam(value = "ID of investments to return", required = true) @Valid @RequestParam(value = "investmentsKey", required = true) String investmentsKey)
     		throws Exception {
@@ -170,6 +194,10 @@ public class InvestmentsApiController implements InvestmentsApi {
         return new ResponseEntity<List<Investments>>(investmentsList, HttpStatus.OK);
     }
 
+    /***
+     * getInvestmentsList this method used to get the login user investments data and non-deleted data and call the investments
+     * service to retrieve the investments data
+     */
     public ResponseEntity<?> getInvestmentsList() throws Exception {
         
     	final String accept = request.getHeader("Accept");
@@ -201,6 +229,10 @@ public class InvestmentsApiController implements InvestmentsApi {
         return new ResponseEntity<List<Investments>>(investmentsList, HttpStatus.OK);
     }
 
+    /***
+     * updateInvestments is used to update the investment data based on user action and call the investment service to update the
+     * investment data
+     */
     public ResponseEntity<ApiResponseMessage> updateInvestments(
     		@ApiParam(value = "Investments object that needs to be updated to the store" ,required=true )  @Valid @RequestBody Investments body)
     		throws Exception {

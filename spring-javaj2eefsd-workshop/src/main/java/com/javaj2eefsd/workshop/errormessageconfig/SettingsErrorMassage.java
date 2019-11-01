@@ -1,7 +1,11 @@
 package com.javaj2eefsd.workshop.errormessageconfig;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
- * @author Devi Raju
+ * @author Devi Raju SettingsErrorMassage class is used to setup the custom error messages
+ */
+/**
+ * @author SL5047975
+ *
  */
 public class SettingsErrorMassage {
 

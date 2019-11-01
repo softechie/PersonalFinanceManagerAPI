@@ -20,6 +20,11 @@ import com.javaj2eefsd.workshop.model.Profile;
 import com.javaj2eefsd.workshop.service.ProfileService;
 
 import io.swagger.annotations.ApiParam;
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is ProfileApiController this class connect with profile module end point who where called
+ *         in webservice give the response for retrieve and edit the profile details.
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Controller
@@ -27,7 +32,7 @@ import io.swagger.annotations.ApiParam;
 public class ProfileApiController implements ProfileApi {
 
     private static final Logger log = LoggerFactory.getLogger(ProfileApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -41,6 +46,10 @@ public class ProfileApiController implements ProfileApi {
         this.request = request;
     }
 
+    /***
+     * editProfileByEmailId method help to edit the profile based on user input and call the profile service to edit
+     * profile data in db
+     */
     public ResponseEntity<Void> editProfileByEmailId(@ApiParam(value = "editprofile object to add to database." ,required=true )  @Valid @RequestBody Profile body) 
     				throws Exception {
     	
@@ -68,6 +77,12 @@ public class ProfileApiController implements ProfileApi {
 //        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    /**
+     * getProfileByEmailId this method used to search the profile data based on user inputs and call the profile service to
+     * retrieve the data in db
+     *
+     * @throws Exception
+     */
     public ResponseEntity<Profile> getProfileByEmailId(@ApiParam(value = "email id of user for whom information is to be retrieved.",required=true) @PathVariable("emailId") String emailId) {
         String accept = request.getHeader("Accept");
         Profile profileList = null;
