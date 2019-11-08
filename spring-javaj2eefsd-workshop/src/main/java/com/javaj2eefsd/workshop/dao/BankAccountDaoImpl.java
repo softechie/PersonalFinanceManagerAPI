@@ -3,6 +3,9 @@ package com.javaj2eefsd.workshop.dao;
 import java.util.List;
 import java.util.Optional;
 
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +18,15 @@ import org.springframework.stereotype.Repository;
 
 import com.javaj2eefsd.workshop.api.ApiException;
 import com.javaj2eefsd.workshop.model.BankAccount;
+import com.javaj2eefsd.workshop.util.AESEncryption;
 import com.javaj2eefsd.workshop.util.PFMConstants;
-import com.mongodb.WriteResult;
+import com.javaj2eefsd.workshop.util.PasswordHasher;
 
+import com.mongodb.WriteResult;
+import javax.crypto.SecretKey;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 /**
  * @author Nagarjuna - BankAccountDao class is used to connect java code in database and create,
  *         update, delete, retrieve and search income data.
@@ -26,7 +35,7 @@ import com.mongodb.WriteResult;
 public class BankAccountDaoImpl implements BankAccountDao {
 	// logger instance
     private static final Logger log = LoggerFactory.getLogger(BankAccountDaoImpl.class);
-	
+   
 	@Autowired
     MongoTemplate mongoTemplate;
 	
@@ -45,7 +54,8 @@ public class BankAccountDaoImpl implements BankAccountDao {
             final Query query = new Query();
             query.addCriteria(Criteria.where("bankAccountId").is(bankAccountId));
             query.addCriteria(Criteria.where("isDelete").is(false));
-            query.addCriteria(Criteria.where("createdBy").is(userId));
+            query.addCriteria(Criteria.where("createdBy").is(userId)); 
+            
             bankAccountObj = mongoTemplate.findOne(query, BankAccount.class);
             log.info("[getBankAccount] Successfully executed query");
         }
@@ -73,7 +83,10 @@ public class BankAccountDaoImpl implements BankAccountDao {
             final Query query = new Query();
             query.addCriteria(Criteria.where("isDelete").is(false));
             query.addCriteria(Criteria.where("createdBy").is(userId));
+          
             bankAccountList = mongoTemplate.find(query, BankAccount.class);
+           // System.out.println("list:"+bankAccountList);
+           
             log.info("[getBankAccountAll] Successfully executed query");
         }
         catch (final Exception e) {
@@ -95,9 +108,14 @@ public class BankAccountDaoImpl implements BankAccountDao {
     public BankAccount createBankAccount(BankAccount bankAccountObj) throws Exception {
 		log.info("[createBankAccount] Start createBankAccount method in DAO");
 		try {
-            mongoTemplate.save(bankAccountObj);
-            log.info("[createBankAccount] Successfully saved data");
-        }
+			
+			String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber());
+			System.out.println("encypted Account number: "+encrypted);
+			   
+			bankAccountObj.setAccountNumber(encrypted);
+			mongoTemplate.save(bankAccountObj);
+			 log.info("[createBankAccount] Successfully saved data");
+		 }
         catch (final Exception e) {
         	log.error(e.getMessage());
             throw new Exception(e.getMessage());
@@ -105,6 +123,48 @@ public class BankAccountDaoImpl implements BankAccountDao {
 		
         return bankAccountObj;
 	}
+		/*	KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+			keyGenerator.init(128);
+		    SecretKey key= keyGenerator.generateKey();
+			String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber(),key);
+			
+			System.out.println("encypted Account number: "+encrypted);
+		   
+			bankAccountObj.setAccountNumber(encrypted);
+			
+			System.out.println("details are "+bankAccountObj.getAccountHolderName());
+			System.out.println("details are "+bankAccountObj.getBankAccountId());
+			System.out.println("details are "+bankAccountObj.getAccountNumber());
+				  
+		     
+			String decrypted =AESEncryption.decrypt(encrypted,key);
+			System.out.println("decrypted accountnumber: "+decrypted);
+			
+			 mongoTemplate.save(bankAccountObj);
+			
+			// bankAccountObj.setAccountNumber(decrypted);
+			 log.info("[createBankAccount] Successfully saved data");*/
+			
+			//System.out.println("details are "+bankAccountObj.getAccountHolderName());
+		//	System.out.println("details are "+bankAccountObj.getBankAccountId());
+			//System.out.println("details are "+bankAccountObj.getAccountNumber());
+		//	String decrypted = AESEncryption.decrypt(encrypted);
+		//	System.out.println("decrypted accountnumber: "+decrypted);	  
+			
+			
+	        
+		/*	String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber());
+			
+			bankAccountObj.setAccountNumber(encrypted);
+			System.out.println("encrypted account number: "+bankAccountObj.getAccountNumber());
+			
+            mongoTemplate.save(bankAccountObj);
+             String decrypted= AESEncryption.decrypt(encrypted);
+			
+			System.out.println("decrypted account number: "+decrypted);*/
+			
+            
+       
 
     /**
      * deleteBankAccount method used to delete the BankAccount data based on user input

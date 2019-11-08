@@ -1,5 +1,6 @@
 package com.javaj2eefsd.workshop.api;
 
+import com.javaj2eefsd.workshop.util.AESEncryption;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javaj2eefsd.workshop.model.BankAccount;
 import com.javaj2eefsd.workshop.service.BankAccountService;
 import com.javaj2eefsd.workshop.util.PFMConstants;
+
+
 import io.swagger.annotations.ApiParam;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
@@ -114,6 +117,7 @@ public class BankAccountApiController implements BankAccountApi {
         	//TODO: add user model instead of hard coding
             final String userId = "1";
             bankAccountObj = bankAccountServiceImpl.getBankAccount(bankAccountId, userId);
+           // bankAccountObj.setAccountNumber(AESEncryption.decrypt(bankAccountObj.getAccountNumber()));
             return new ResponseEntity<BankAccount>(bankAccountObj, HttpStatus.OK);
         } catch (final IOException e) {
         	
@@ -144,10 +148,19 @@ public class BankAccountApiController implements BankAccountApi {
     	try {
             //TODO: add user model instead of hard coding
             final String userId = "1";
-            if(bankAccountKey == null || bankAccountKey.isEmpty())
+           
+			if(bankAccountKey == null || bankAccountKey.isEmpty())
             	bankAccountList = bankAccountServiceImpl.getBankAccountAll(userId);
             else
+            {
             	bankAccountList = bankAccountServiceImpl.searchBankAccount(bankAccountKey, userId);
+            	/*for(BankAccount b:bankAccountList)
+                {
+                	b.setAccountNumber(AESEncryption.decrypt(b.getAccountNumber()));
+                
+                } */
+            }
+			
         }
     	catch (final IOException e) {
         	
@@ -174,11 +187,20 @@ public class BankAccountApiController implements BankAccountApi {
     	
     	final String accept = request.getHeader("Accept");
         List<BankAccount> bankAccountList = null;
-        
+       
     	try {
     		//TODO: add user model instead of hard coding
             final String userId = "1";
+          
             bankAccountList = bankAccountServiceImpl.getBankAccountAll(userId);
+                    
+          /*  for(BankAccount b:bankAccountList)
+            {
+            	b.setAccountNumber(AESEncryption.decrypt(b.getAccountNumber()));
+            
+            } 
+            System.out.println(bankAccountList);*/
+        
         }
     	catch (final IOException e) {
         	
@@ -197,7 +219,7 @@ public class BankAccountApiController implements BankAccountApi {
         			new ApiResponseMessage(PFMConstants.ERROR_CODE, PFMConstants.UNKNOWN_EXCEPTION),
         			HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
+    	 
         return new ResponseEntity<List<BankAccount>>(bankAccountList, HttpStatus.OK);
     }
 

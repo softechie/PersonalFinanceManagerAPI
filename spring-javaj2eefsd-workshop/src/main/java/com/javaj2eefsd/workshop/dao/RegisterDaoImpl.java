@@ -46,7 +46,7 @@ public class RegisterDaoImpl implements RegisterDao {
 			registeruser.setUserStatus(false);
 			registeruser.setOtp(otp);
 			mongoTemplate.save(registeruser);
-			this.sendEmail(registeruser.getEmailId(),registeruser.getOtp());
+			//this.sendEmail(registeruser.getEmailId(),registeruser.getOtp());
 		}
 		catch (DuplicateKeyException e) {
 			throw new ApiException(PFMConstants.ERROR_CODE, PFMConstants.INVALID_USER_EXISTS);
@@ -76,7 +76,7 @@ public class RegisterDaoImpl implements RegisterDao {
 		}
 		
 		//Updating the user status ends here
-		log.info(" After update :: "+" userId ==> "+emailId + " otp ==> "+otp + registeruser.getOtp()+" "+registeruser.getLastName());
+		log.info(" After update :: "+" userId ==> "+emailId + " otp ==> "+otp +" "+registeruser.getLastName());
 	}
 
 	public void sendEmail(String emailId, Integer otp) throws Exception {

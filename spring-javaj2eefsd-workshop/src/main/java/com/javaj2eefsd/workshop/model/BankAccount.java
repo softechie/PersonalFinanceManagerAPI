@@ -16,15 +16,17 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
-@Document
+//@Document
+@Document(collection="user_bank")
 public class BankAccount {
-  @Id
+//  @Id
   @JsonProperty("bankAccountId")
   private String bankAccountId = null;
 
   @Indexed(unique=true)
   @JsonProperty("accountNumber")
-  private BigDecimal accountNumber = null;
+//  private BigDecimal accountNumber = null;
+  private String accountNumber = null;
 
   @JsonProperty("accountHolderName")
   private String accountHolderName = null;
@@ -73,10 +75,15 @@ public class BankAccount {
     this.bankAccountId = bankAccountId;
   }
 
-  public BankAccount accountNumber(BigDecimal accountNumber) {
-    this.accountNumber = accountNumber;
-    return this;
-  }
+//  public BankAccount accountNumber(BigDecimal accountNumber) {
+//    this.accountNumber = accountNumber;
+//    return this;
+//  }
+  
+  	public BankAccount accountNumber(String accountNumber) {
+	    this.accountNumber = accountNumber;
+	    return this;
+	  }
 
   /**
    * Get accountNumber
@@ -86,13 +93,20 @@ public class BankAccount {
 
   @Valid
 
-  public BigDecimal getAccountNumber() {
-    return accountNumber;
-  }
+//  public BigDecimal getAccountNumber() {
+//    return accountNumber;
+//  }
+  
+  public String getAccountNumber() {
+	    return accountNumber;
+	  }
 
-  public void setAccountNumber(BigDecimal accountNumber) {
-    this.accountNumber = accountNumber;
-  }
+//  public void setAccountNumber(BigDecimal accountNumber) {
+//    this.accountNumber = accountNumber;
+//  }
+  public void setAccountNumber(String accountNumber) {
+	    this.accountNumber = accountNumber;
+	  }
 
   public BankAccount accountHolderName(String accountHolderName) {
     this.accountHolderName = accountHolderName;

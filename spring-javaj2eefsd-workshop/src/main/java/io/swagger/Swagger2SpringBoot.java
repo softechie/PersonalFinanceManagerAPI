@@ -11,7 +11,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 @ComponentScan(basePackages = { "io.swagger", "com.javaj2eefsd.workshop" })
-public class Swagger2SpringBoot implements CommandLineRunner {
+public class Swagger2SpringBoot implements CommandLineRunner 
+{
 
     @Override
     public void run(final String... arg0) throws Exception {
@@ -34,3 +35,4 @@ public class Swagger2SpringBoot implements CommandLineRunner {
 
     }
 }
+

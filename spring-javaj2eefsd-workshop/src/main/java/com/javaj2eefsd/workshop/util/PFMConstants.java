@@ -36,6 +36,6 @@ public class PFMConstants {
 	public static final String SUCCESS_USER_ACTIVATED = "Successfully activated user";
 	
 	//register user
-	public static final String INVALID_USER_EXISTS = "User exists with provided email address";
+	public static final String INVALID_USER_EXISTS = "User exists with provided email address/mobilenumber";
 	public static final String SUCCESS_USER_CREATED = "Successfully created user";
 }

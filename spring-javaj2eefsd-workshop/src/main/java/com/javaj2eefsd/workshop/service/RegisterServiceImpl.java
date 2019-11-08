@@ -50,13 +50,18 @@ public class RegisterServiceImpl implements RegisterService {
 		
 		final String username = "dakshinn@gmail.com";
 		final String password = "";
-
+		
+		
+        
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
+		//props.put("mail.smtp.starttls.required", "true");
+		props.put("mail.smtp.ssl.enable", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
-
+	//	props.put("mail.smtp.user", username);
+		
 		Session session = Session.getInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
@@ -65,7 +70,10 @@ public class RegisterServiceImpl implements RegisterService {
 				});
 
 		try {
-
+			// Transport t = session.getTransport("smtp");
+		     //   t.connect(username, password);
+		       
+		       
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("from-email@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
@@ -77,11 +85,13 @@ public class RegisterServiceImpl implements RegisterService {
 			Transport.send(message);
 
 			System.out.println("Done");
+		//	 t.close();
 
 		} catch (MessagingException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 		
 	}
-
+	
 }
