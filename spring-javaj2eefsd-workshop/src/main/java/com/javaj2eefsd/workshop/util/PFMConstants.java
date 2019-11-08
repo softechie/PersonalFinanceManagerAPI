@@ -19,6 +19,10 @@ public class PFMConstants {
 	public static final String SUCCESS_INCOME_ADD = "Successfully added income data";
 	public static final String SUCCESS_INCOME_UPDATE = "Successfully updated income data";
 	public static final String SUCCESS_INCOME_DELETE = "Successfully delete income data";
+	//Savings messages
+		public static final String SUCCESS_SAVINGS_ADD = "Successfully added savings data";
+		public static final String SUCCESS_SAVINGS_UPDATE = "Successfully updated savings data";
+		public static final String INVALID_SAVINGSID = "Invalid savings id";
     
     //Investments messages
   	public static final String INVALID_INVESTMENTSID = "Invalid investments id";
