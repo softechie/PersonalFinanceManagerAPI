@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.javaj2eefsd.workshop.api.ApiResponseMessage;
 import com.javaj2eefsd.workshop.model.ActivateUser;
 
 import io.swagger.annotations.Api;
