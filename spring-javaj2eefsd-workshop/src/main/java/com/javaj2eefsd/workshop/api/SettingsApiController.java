@@ -18,6 +18,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javaj2eefsd.workshop.model.UserSettingsByEmailId;
 import com.javaj2eefsd.workshop.service.SettingsService;
+
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is SettingsApiController this class connect with settings module end point who where called
+ *         in webservice give the response for retrieve the user profile settings by email id.
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Controller
@@ -25,7 +31,7 @@ import com.javaj2eefsd.workshop.service.SettingsService;
 public class SettingsApiController implements SettingsApi {
 
     private static final Logger log = LoggerFactory.getLogger(SettingsApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -38,6 +44,10 @@ public class SettingsApiController implements SettingsApi {
    @Autowired
    SettingsService settingsServiceImpl;
    
+   /***
+    * getSettings method help to retrieve the user profile settings by email id.
+    *
+    */
     public ResponseEntity<UserSettingsByEmailId> getSettings(@ApiParam(value = "Get User Profile Settings by email id",required=true) @PathVariable("emailId") String emailId) throws Exception {
         String accept = request.getHeader("Accept");
         UserSettingsByEmailId userSettings=null;

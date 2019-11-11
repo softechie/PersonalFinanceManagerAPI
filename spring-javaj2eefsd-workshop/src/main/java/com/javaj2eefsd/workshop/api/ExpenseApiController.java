@@ -22,8 +22,9 @@ import io.swagger.annotations.ApiParam;
 
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /***
- * @author sathsubramanian This is ExpenseApiController this class connect with expense module end point who where calld
+ * @author sathsubramanian This is ExpenseApiController this class connect with expense module end point who where called
  *         in webservice give the response for create ,update.delete,retrieve and search the expense details.
  */
 @Controller
@@ -31,7 +32,7 @@ import io.swagger.annotations.ApiParam;
 public class ExpenseApiController implements ExpenseApi {
 
     private static final Logger log = LoggerFactory.getLogger(ExpenseApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;

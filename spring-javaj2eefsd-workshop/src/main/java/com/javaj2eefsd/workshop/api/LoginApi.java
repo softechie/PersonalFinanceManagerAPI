@@ -16,7 +16,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* LoginApi interface is used to create the login API resource
+*/
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Api(value = "login", description = "the login API")

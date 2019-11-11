@@ -10,7 +10,10 @@ import com.javaj2eefsd.workshop.errormessageconfig.SettingsErrorMassage;
 import com.javaj2eefsd.workshop.model.UserCurrency;
 import com.javaj2eefsd.workshop.model.UserPassword;
 import com.javaj2eefsd.workshop.model.UserSettingsByEmailId;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* @author Nagarjuna - SettingsServiceImpl class used to validate the business logic and help to call the dao layer
+*/
 
 @Service
 public class SettingsServiceImpl implements SettingsService{

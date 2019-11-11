@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.threeten.bp.OffsetDateTime;
 import com.javaj2eefsd.workshop.dao.InvestmentsDao;
 import com.javaj2eefsd.workshop.model.Investments;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * @author Nagarjuna - InvestmentsService interface used to validate the business logic and help to call the dao layer
  */
@@ -55,6 +55,7 @@ public class InvestmentsServiceImpl implements InvestmentsService {
     @Override
     public Investments createInvestments(Investments investmentsObj) throws Exception {
     	log.info("[createInvestments] start createInvestments in Service");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
     	investmentsObj.setCreatedDate(OffsetDateTime.now());
     	investmentsObj.setUpdatedDate(OffsetDateTime.now());
     	investmentsObj.setCreatedBy("1");
@@ -87,6 +88,7 @@ public class InvestmentsServiceImpl implements InvestmentsService {
     @Override
     public Investments updateInvestments(Investments investmentsObj, String userId) throws Exception {
     	log.info("[updateInvestments] start updateInvestments in Service");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
     	investmentsObj.setUpdatedDate(OffsetDateTime.now());
     	investmentsObj.setCreatedBy("1");
     	log.info("[IncomeServiceImpl] [updateInvestments] update some fields before update");

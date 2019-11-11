@@ -12,7 +12,7 @@ import org.threeten.bp.OffsetDateTime;
 import com.javaj2eefsd.workshop.dao.IExpenseDao;
 import com.javaj2eefsd.workshop.model.Expense;
 
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * @author sathsubramanian ExpenseService class used to validate the business logic and help to call the dao layer
  */
@@ -48,6 +48,7 @@ public class ExpenseServiceImpl implements IExpenseService {
     @Override
     public Expense expenseCreatePost(final Expense expenseObj) throws Exception {
         log.info("start expenseCreatePost in service ");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
         expenseObj.setCreatedDate(OffsetDateTime.now());
         expenseObj.setUpdatedDate(OffsetDateTime.now());
         expenseObj.setCreateBy("sathish");
@@ -81,6 +82,7 @@ public class ExpenseServiceImpl implements IExpenseService {
     @Override
     public Expense expenseUpdatePost(final Expense expenseObj) throws Exception {
         log.info("start expenseUpdatePost in service ");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
         expenseObj.setUpdatedDate(OffsetDateTime.now());
         return expenseDaoImpl.expenseUpdatePost(expenseObj);
     }

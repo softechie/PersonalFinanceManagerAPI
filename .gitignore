@@ -3,3 +3,12 @@
 **/target
 *.key
 *.csr
+**/bin
+*.project
+*.classpath
+**/.settings
+/target
+/*.project
+/.classpath
+/.settings
+target

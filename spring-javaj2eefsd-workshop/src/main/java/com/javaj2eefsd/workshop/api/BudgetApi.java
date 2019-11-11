@@ -27,6 +27,12 @@ import javax.validation.constraints.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* BudgetApi interface is used to create the budget API resource
+*/
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Api(value = "budget", description = "the budget API")

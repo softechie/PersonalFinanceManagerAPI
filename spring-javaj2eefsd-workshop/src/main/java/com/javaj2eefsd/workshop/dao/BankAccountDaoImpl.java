@@ -20,6 +20,7 @@ import com.javaj2eefsd.workshop.api.ApiException;
 import com.javaj2eefsd.workshop.model.BankAccount;
 import com.javaj2eefsd.workshop.util.AESEncryption;
 import com.javaj2eefsd.workshop.util.PFMConstants;
+
 import com.javaj2eefsd.workshop.util.PasswordHasher;
 
 import com.mongodb.WriteResult;
@@ -27,8 +28,11 @@ import javax.crypto.SecretKey;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+
 /**
- * @author Nagarjuna - BankAccountDao class is used to connect java code in database and create,
+ * @author Nagarjuna - BankAccountDaoImpl class is used to connect java code in database and create,
  *         update, delete, retrieve and search income data.
  */
 @Repository
@@ -38,6 +42,7 @@ public class BankAccountDaoImpl implements BankAccountDao {
    
 	@Autowired
     MongoTemplate mongoTemplate;
+	
 	
 	/**
      * getBankAccount method used to retrieve the BankAccount data from db
@@ -109,11 +114,20 @@ public class BankAccountDaoImpl implements BankAccountDao {
 		log.info("[createBankAccount] Start createBankAccount method in DAO");
 		try {
 			
-			String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber());
+			KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+			
+			keyGenerator.init(128);
+			
+		    SecretKey key= keyGenerator.generateKey();
+		    
+			String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber(),key);
+			
 			System.out.println("encypted Account number: "+encrypted);
-			   
+		   			
 			bankAccountObj.setAccountNumber(encrypted);
+			
 			mongoTemplate.save(bankAccountObj);
+			
 			 log.info("[createBankAccount] Successfully saved data");
 		 }
         catch (final Exception e) {
@@ -123,47 +137,7 @@ public class BankAccountDaoImpl implements BankAccountDao {
 		
         return bankAccountObj;
 	}
-		/*	KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-			keyGenerator.init(128);
-		    SecretKey key= keyGenerator.generateKey();
-			String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber(),key);
-			
-			System.out.println("encypted Account number: "+encrypted);
-		   
-			bankAccountObj.setAccountNumber(encrypted);
-			
-			System.out.println("details are "+bankAccountObj.getAccountHolderName());
-			System.out.println("details are "+bankAccountObj.getBankAccountId());
-			System.out.println("details are "+bankAccountObj.getAccountNumber());
-				  
-		     
-			String decrypted =AESEncryption.decrypt(encrypted,key);
-			System.out.println("decrypted accountnumber: "+decrypted);
-			
-			 mongoTemplate.save(bankAccountObj);
-			
-			// bankAccountObj.setAccountNumber(decrypted);
-			 log.info("[createBankAccount] Successfully saved data");*/
-			
-			//System.out.println("details are "+bankAccountObj.getAccountHolderName());
-		//	System.out.println("details are "+bankAccountObj.getBankAccountId());
-			//System.out.println("details are "+bankAccountObj.getAccountNumber());
-		//	String decrypted = AESEncryption.decrypt(encrypted);
-		//	System.out.println("decrypted accountnumber: "+decrypted);	  
-			
-			
-	        
-		/*	String encrypted=AESEncryption.encrypt(bankAccountObj.getAccountNumber());
-			
-			bankAccountObj.setAccountNumber(encrypted);
-			System.out.println("encrypted account number: "+bankAccountObj.getAccountNumber());
-			
-            mongoTemplate.save(bankAccountObj);
-             String decrypted= AESEncryption.decrypt(encrypted);
-			
-			System.out.println("decrypted account number: "+decrypted);*/
-			
-            
+		
        
 
     /**

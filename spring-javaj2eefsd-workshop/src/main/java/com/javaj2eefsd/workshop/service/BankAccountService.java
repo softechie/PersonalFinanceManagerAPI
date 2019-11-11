@@ -2,7 +2,7 @@ package com.javaj2eefsd.workshop.service;
 
 import java.util.List;
 import com.javaj2eefsd.workshop.model.BankAccount;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * @author Nagarjuna - BankAccountService interface used to validate the business logic and help to call the dao layer
  */

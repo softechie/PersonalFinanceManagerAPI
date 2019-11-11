@@ -9,9 +9,9 @@ import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
- * DateRange
+ * DateRange model class.
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")

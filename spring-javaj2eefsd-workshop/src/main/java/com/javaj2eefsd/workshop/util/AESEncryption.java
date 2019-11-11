@@ -37,158 +37,29 @@ import java.security.SecureRandom;
 
 import sun.misc.BASE64Encoder;
 import sun.misc.BASE64Decoder;
+
 public class AESEncryption {
 	
-	 static final String ALGO = "AES";
-	    public static final byte[] keyValue =
-	            new byte[]{'T', 'h', 'e', 'B', 'e', 's', 't', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y'};
-	    
-	public static String encrypt(String accountNumber) throws Exception {
 		
-		  Key key = generateKey();	       
-		byte[] plainTextByte = accountNumber.toString().getBytes();
-
-		Cipher c = Cipher.getInstance(ALGO);
-		
-		c.init(Cipher.ENCRYPT_MODE, key);
-		
-		byte[] encryptedByte = c.doFinal(plainTextByte);
-
-		Base64.Encoder encoder = Base64.getEncoder();
-
-		String encryptedText = encoder.encodeToString(encryptedByte);
-
-		System.out.println("encoded text:" + encryptedText);
-
-		return (encryptedText);
-	}		
-	public static String decrypt(String encryptedText) throws Exception {	
-        Key key = generateKey();
-        
-        Cipher c = Cipher.getInstance(ALGO);
-        
-        c.init(Cipher.DECRYPT_MODE, key);
-        
-        byte[] decordedValue = new BASE64Decoder().decodeBuffer(encryptedText);
-        
-        byte[] decValue = c.doFinal(decordedValue);
-        
-       // System.out.print(decValue);
-        return new String(decValue);
-    }	
-	 private static Key generateKey() throws Exception {
+		 public static String encrypt(String accountNumber, SecretKey key) throws Exception {
 		 
-		 return new SecretKeySpec(keyValue,ALGO);
-	    }
-	
-	  //return new SecretKeySpec(Arrays.copyOf(keyValue, 16),ALGO);
-		/*
-		 * public static String encrypt(String accountNumber, SecretKey key) throws
-		 * Exception {
-		 * 
-		 * 
-		 * byte[] plainTextByte = accountNumber.toString().getBytes();
-		 * 
-		 * Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-		 * 
-		 * cipher.init(Cipher.ENCRYPT_MODE, key);
-		 * 
-		 * byte[] encryptedByte = cipher.doFinal(plainTextByte);
-		 * 
-		 * Base64.Encoder encoder = Base64.getEncoder();
-		 * 
-		 * String encryptedText = encoder.encodeToString(encryptedByte);
-		 * 
-		 * System.out.println("encoded text:" + encryptedText);
-		 * 
-		 * return (encryptedText);
-		 * 
-		 * }
-		 */
+		  byte[] plainTextByte = accountNumber.toString().getBytes();
+		  
+		  Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+		  
+		  cipher.init(Cipher.ENCRYPT_MODE, key);
+		 
+		  byte[] encryptedByte = cipher.doFinal(plainTextByte);
+		  
+		  Base64.Encoder encoder = Base64.getEncoder();
+		  
+		  String encryptedText = encoder.encodeToString(encryptedByte);
+		  
+		  System.out.println("encoded text:" + encryptedText);
+		  
+		  return (encryptedText);
+		  
+		  }
+		 
 
-	/*
-	 * public static final String key = "aesEncryptionKey";
-	 *  public static final
-	 * String initVector = "encryptionIntVec"; 
-	 * public static String encrypt(String accountNumber) throws Exception {
-	 * IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
-	 * 
-	 * SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"),"AES");
-	 * 
-	 * byte[] plain = accountNumber.toString().getBytes();
-	 * 
-	 * Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-	 * 
-	 * cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
-	 * 
-	 * byte[] cipherText = cipher.doFinal(plain);
-	 * 
-	 * Base64.Encoder encoder = Base64.getEncoder();
-	 * 
-	 * return encoder.encodeToString(cipherText);
-	 * 
-	 * }
-	 */
-
-	/*
-	 * public static String decrypt(String encryptedText, SecretKey secretKey)
-	 * throws Exception { Base64.Decoder decoder = Base64.getDecoder();
-	 * 
-	 * byte[] encryptedTextByte = decoder.decode(encryptedText);
-	 * 
-	 * Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-	 * 
-	 * cipher.init(Cipher.DECRYPT_MODE, secretKey);
-	 * 
-	 * byte[] decryptedByte = cipher.doFinal(encryptedTextByte);
-	 * 
-	 * String decryptedText = new String(decryptedByte);
-	 * 
-	 * return decryptedText; }
-	 */
-
-	/*public static String decrypt(String encryptedText, Key key) throws Exception {
-		//Key key2 = StoreKey.generateKey();
-		
-   
-		Base64.Decoder decoder = Base64.getDecoder();
-
-		byte[] encryptedTextByte = Arrays.toString(Base64.getDecoder().decode(encryptedText)).getBytes();
-		//byte[] encryptedTextByte = decoder.decode(encryptedText);
-
-		Cipher c = Cipher.getInstance(StoreKey.ALGO);
-
-		c.init(Cipher.DECRYPT_MODE, key);
-
-		byte[] decryptedByte = c.doFinal(encryptedTextByte);
-
-		String decValue = new String((decryptedByte),"UTF-8");
-				
-		return new String(decValue);
-	
-	
-     }*/
-	
-	
-	/*
-	 * public static String decrypt(String encryptedText) throws Exception {
-	 * IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
-	 * SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
-	 * 
-	 * Base64.Decoder decoder = Base64.getDecoder();
-	 * 
-	 * byte[] encryptedTextByte = decoder.decode(encryptedText);
-	 * 
-	 * Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-	 * 
-	 * cipher.init(Cipher.DECRYPT_MODE,skeySpec, iv);
-	 * 
-	 * byte[] decryptedByte = cipher.doFinal(encryptedTextByte);
-	 * 
-	 * String decryptedText = new String(decryptedByte);
-	 * 
-	 * return decryptedText; }
-	 */
-	
-	
 }

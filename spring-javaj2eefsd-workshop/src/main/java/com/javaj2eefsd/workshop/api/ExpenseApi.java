@@ -23,7 +23,10 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.annotations.Authorization;
 
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* ExpenseApi interface is used to create the expense API resource
+*/
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Api(value = "expense", description = "the expense API")

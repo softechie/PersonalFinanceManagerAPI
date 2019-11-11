@@ -2,7 +2,7 @@ package com.javaj2eefsd.workshop.dao;
 
 import java.util.List;
 import com.javaj2eefsd.workshop.model.Profile;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * 
  * @author Kumar - ProfileDao interface is Database Access Object for profile to connect with Database

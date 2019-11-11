@@ -19,7 +19,7 @@ import com.javaj2eefsd.workshop.errormessageconfig.ExpenseErrorMassage;
 import com.javaj2eefsd.workshop.model.Expense;
 import com.mongodb.WriteResult;
 
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
  * @author sathsubramanian ExpenseDao class is used to connect java code in database and create ,update.delete,retrieve
  *         and search expense data
@@ -43,6 +43,7 @@ public class ExpenceDaoImpl implements IExpenseDao {
     @Override
     public List<Expense> expenseAllGet(final String userId) throws Exception {
         log.info("start expenseAllGet method in dao");
+        //IDIOM:Item-0013: Prefer Collection over Arrays
         List<Expense> expenseList = null;
         try {
             final Query query = new Query();
@@ -102,6 +103,7 @@ public class ExpenceDaoImpl implements IExpenseDao {
             update.set("isDelete", true);
             update.set("updatedDate", OffsetDateTime.now());
             result = mongoTemplate.updateFirst(query, update, Expense.class);
+            
             if (!result.isUpdateOfExisting()) {
                 log.info("somthing is wrong going to exception");
                 throw new Exception(ExpenseErrorMassage.INVALIDEXPENSEID);

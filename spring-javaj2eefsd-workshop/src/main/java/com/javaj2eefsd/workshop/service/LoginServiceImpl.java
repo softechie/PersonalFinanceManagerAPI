@@ -8,7 +8,10 @@ import com.javaj2eefsd.workshop.dao.LoginDao;
 import com.javaj2eefsd.workshop.model.UserDetail;
 import com.javaj2eefsd.workshop.model.UserDetail;
 
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* @author Nagarjuna - LoginService interface used to validate the business logic and help to call the dao layer
+*/
 @Service
 public class LoginServiceImpl implements LoginService {
 	

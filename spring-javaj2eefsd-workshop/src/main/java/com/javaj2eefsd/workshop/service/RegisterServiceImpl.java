@@ -18,6 +18,10 @@ import org.springframework.stereotype.Service;
 import com.javaj2eefsd.workshop.dao.RegisterDao;
 import com.javaj2eefsd.workshop.model.User;
 
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/**
+* @author Nagarjuna - RegisterServiceImpl class used to validate the business logic and help to call the dao layer
+*/
 @Service
 
 public class RegisterServiceImpl implements RegisterService {

@@ -20,6 +20,11 @@ import com.javaj2eefsd.workshop.service.RegisterService;
 import com.javaj2eefsd.workshop.util.PFMConstants;
 
 import io.swagger.annotations.ApiParam;
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
+/***
+ *  This is RegisterApiController this class connect with register module end point who where called
+ *         in webservice give the response for register user details.
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
 @Controller
@@ -27,7 +32,7 @@ import io.swagger.annotations.ApiParam;
 public class RegisterApiController implements RegisterApi {
 
     private static final Logger log = LoggerFactory.getLogger(RegisterApiController.class);
-
+  //IDIOM:Item-0008: Use descriptive Identifiers
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
@@ -41,8 +46,14 @@ public class RegisterApiController implements RegisterApi {
     @Autowired
     RegisterService registerserviceObj;
 
+    /***
+     * registerUser method help to register new user data
+     *
+     */
+
     public ResponseEntity<ApiResponseMessage> registerUser(@ApiParam(value = "User registration." ,required=true )  @Valid @RequestBody User body) throws Exception {
         String accept = request.getHeader("Accept");
+        System.out.println(accept);
         if (accept != null && accept.contains("application/json")) {
             try {
                 registerserviceObj.registerUser(body);

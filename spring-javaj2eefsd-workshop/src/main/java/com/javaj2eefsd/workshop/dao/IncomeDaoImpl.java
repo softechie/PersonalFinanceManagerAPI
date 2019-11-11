@@ -15,9 +15,9 @@ import com.javaj2eefsd.workshop.api.ApiException;
 import com.javaj2eefsd.workshop.model.Income;
 import com.javaj2eefsd.workshop.util.PFMConstants;
 import com.mongodb.WriteResult;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
- * @author Nagarjuna - IncomeDao class is used to connect java code in database and create,
+ * @author Nagarjuna - IncomeDaoImpl class is used to connect java code in database and create,
  *         update, delete, retrieve and search income data.
  */
 @Repository

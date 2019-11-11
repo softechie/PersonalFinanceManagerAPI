@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.threeten.bp.OffsetDateTime;
 import com.javaj2eefsd.workshop.dao.BankAccountDao;
 import com.javaj2eefsd.workshop.model.BankAccount;
-
+//IDIOM:Item-0032: Add a useful javadoc comment to each class,interface,Enum declaration.
 /**
- * @author Nagarjuna - BankAccountService interface used to validate the business logic and help to call the dao layer
+ * @author Nagarjuna - BankAccountServiceImpl class used to validate the business logic and help to call the dao layer
  */
 @Service
 public class BankAccountServiceImpl implements BankAccountService {
@@ -55,6 +55,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Override
     public BankAccount createBankAccount(BankAccount bankAccountObj) throws Exception {
     	log.info("[createBankAccount] start createBankAccount in Service");
+    	//IDIOM:Item-0142: Inject a clock instead of hard-coding time
     	bankAccountObj.setCreatedDate(OffsetDateTime.now());
     	bankAccountObj.setUpdatedDate(OffsetDateTime.now());
     	bankAccountObj.setCreatedBy("1");
