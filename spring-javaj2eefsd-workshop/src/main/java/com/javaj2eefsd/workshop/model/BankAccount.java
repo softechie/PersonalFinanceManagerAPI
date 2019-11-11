@@ -17,8 +17,8 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
-//@Document
-@Document(collection="user_bank")
+@Document
+//@Document(collection="user_bank")
 public class BankAccount {
 //  @Id
   @JsonProperty("bankAccountId")

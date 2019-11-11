@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-06-06T07:36:56.089+05:30")
 
-@Document(collection="user_siri")
+@Document(collection="user")
 public class UserDetail   {
 
   @Indexed(unique=true)
