@@ -7,8 +7,9 @@
 *.project
 *.classpath
 **/.settings
-/target
-/*.project
-/.classpath
-/.settings
-target
+
+#vscode editor
+*maven-wrapper.jar
+*jvm.config
+**/.sts4-cache
+**/.vscode
