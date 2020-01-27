@@ -16,24 +16,6 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.9.RELEASE</version>
 	</parent>
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<!-- this will be mapped inside application.properties file @profile@ tag-->
-				<profile>dev</profile>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<profile>prod</profile>
-			</properties>
-		</profile>
-	</profiles>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
